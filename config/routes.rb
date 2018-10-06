@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   namespace 'admin' do
     get 'dashboard', to: 'dashboards#show'
-    resources :innings, only: [:new, :create]
+    resources :innings, only: [:show, :new, :create] do
+      resources :presentations, only: [:new, :create, :edit, :update]
+    end
   end
 end

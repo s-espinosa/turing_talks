@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_175912) do
+ActiveRecord::Schema.define(version: 2018_10_06_031620) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,8 +19,16 @@ ActiveRecord::Schema.define(version: 2018_10_05_175912) do
     t.string "name"
   end
 
+  create_table "presentations", force: :cascade do |t|
+    t.date "date"
+    t.date "due_date"
+    t.bigint "inning_id"
+    t.index ["inning_id"], name: "index_presentations_on_inning_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer "role", default: 0
   end
 
+  add_foreign_key "presentations", "innings"
 end
