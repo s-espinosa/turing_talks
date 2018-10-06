@@ -1,0 +1,10 @@
+<h2><%= @inning.name %></h2>
+
+<%= link_to "Add a Presentation Date", new_admin_inning_presentation_path(@inning) %>
+
+<ul>
+  <% @inning.presentations.each_with_index do |presentation, index| %>
+    <li>Presentation Date <%= index + 1 %>: <%= presentation.formatted_date %> <%= link_to "Edit", edit_admin_inning_presentation_path(@inning, presentation) %></li>
+  <% end %>
+</ul>
+

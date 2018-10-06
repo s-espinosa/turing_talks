@@ -1,4 +1,8 @@
 class Admin::InningsController < Admin::BaseController
+  def show
+    @inning = Inning.find(params[:id])
+  end
+
   def new
     @inning = Inning.new
   end

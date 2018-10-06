@@ -1,0 +1,7 @@
+<%= form_for([:admin, @inning, @presentation]) do |f| %>
+  <%= f.label :date %>
+  <%= f.date_field :date %>
+  <%= f.label :due_date %>
+  <%= f.date_field :due_date, order: ['day', 'month', 'year'] %>
+  <%= f.submit "Add Presentation Date" %>
+<% end %>
