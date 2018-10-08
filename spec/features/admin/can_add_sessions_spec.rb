@@ -3,7 +3,9 @@ require 'rails_helper'
 describe "As an admin" do
   describe "when I visit the show page for an inning" do
     it "I can add a session" do
+      admin  = User.create(role: 1)
       inning = Inning.create(name: "1806")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
       visit admin_inning_path(inning)
 
       click_on("Add a Presentation Date")
